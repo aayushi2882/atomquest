@@ -21,5 +21,22 @@ AtomQuest is a futuristic enterprise goal and performance management platform bu
 ## Deployed 
 https://atomquest-roan.vercel.app/
 
+## How to Use
+
+### Employee
+- Login as Employee
+- Create quarterly goals
+- Submit goals for approval
+
+### Manager
+- Login as Manager
+- Review submitted employee goals
+- Approve or reject goals
+
+### Admin
+- Login as Admin
+- Monitor organization-wide analytics
+- Manage goal cycles and employee overview
+
 
 
