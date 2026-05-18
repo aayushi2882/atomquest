@@ -18,13 +18,8 @@ AtomQuest is a futuristic enterprise goal and performance management platform bu
 - Node.js
 - Express.js
 
-## Run Locally
-
-```bash
-cd client
-npm install
-npm run dev
-
-## Working link
+## Deployed 
 https://atomquest-roan.vercel.app/
+
+
 
