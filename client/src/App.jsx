@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LandingPage        from "./pages/LandingPage";
 import LoginPage          from "./pages/Login";
+import SignupPage         from "./pages/Signup";
 import EmployeeDashboard  from "./pages/EmployeeDashboard";
 import ManagerDashboard   from "./pages/ManagerDashboard";
 import GoalCreationPage   from "./pages/GoalCreation";
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/"            element={<LandingPage />} />
                 <Route path="/landing"     element={<LandingPage />} />
                 <Route path="/login"       element={<LoginPage />} />
+                <Route path="/signup"      element={<SignupPage />} />
                 <Route path="/coming-soon" element={<ComingSoon />} />
 
                 {/* ── Employee workspace ──────────────────────── */}

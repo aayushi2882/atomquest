@@ -6,7 +6,7 @@ import ExplodedWorkflow from "../components/ExplodedWorkflow";
 import { saveRoleIntent } from "../utils/user";
 
 /* ─── Top Navbar ─────────────────────────────────────────────────────── */
-function LandingNav({ onLogin }) {
+function LandingNav({ onSignIn, onGetStarted }) {
     return (
         <header
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 h-14"
@@ -31,13 +31,15 @@ function LandingNav({ onLogin }) {
             {/* Nav actions */}
             <div className="flex items-center gap-3">
                 <button
-                    onClick={onLogin}
+                    id="nav-sign-in"
+                    onClick={onSignIn}
                     className="text-xs text-white/50 hover:text-white/80 transition-colors px-3 py-1.5 rounded-lg"
                 >
                     Sign in
                 </button>
                 <button
-                    onClick={onLogin}
+                    id="nav-get-started"
+                    onClick={onGetStarted}
                     className="btn-primary text-xs px-4 py-2 rounded-lg font-medium"
                 >
                     Get started
@@ -57,16 +59,17 @@ function LandingPage() {
     const heroOpacity = useTransform(scrollY, [0, 420], [1, 0]);
     const heroY       = useTransform(scrollY, [0, 420], [0, -40]);
 
-    const goLogin = (role) => {
+    const goLogin   = () => navigate("/login");
+    const goSignup  = (role) => {
         if (role) saveRoleIntent(role);
-        navigate("/login");
+        navigate("/signup");
     };
 
     return (
         <div className="bg-[#131313] text-white">
 
             {/* ── Fixed Navbar ──────────────────────────────────────── */}
-            <LandingNav onLogin={goLogin} />
+            <LandingNav onSignIn={goLogin} onGetStarted={() => goSignup(null)} />
 
             {/* ── Hero — full viewport, content vertically centred ───── */}
             <div
@@ -143,7 +146,7 @@ function LandingPage() {
                         transition={{ duration: 0.65, ease: "easeOut", delay: 0.36 }}
                     >
                         <button
-                            onClick={goLogin}
+                            onClick={() => goSignup(null)}
                             className="btn-primary px-7 py-3 rounded-xl text-sm font-semibold flex items-center gap-2"
                         >
                             Get started
@@ -188,7 +191,7 @@ function LandingPage() {
                                 <p className="text-[11px] text-white/55">Set goals, track progress</p>
                             </div>
                             <button
-                                onClick={() => goLogin("Employee")}
+                                onClick={() => goSignup("Employee")}
                                 className="mt-auto w-full py-2.5 rounded-xl text-xs font-medium text-white/80 hover:text-white transition-all duration-200"
                                 style={{
                                     background: "rgba(99,102,241,0.14)",
@@ -221,7 +224,7 @@ function LandingPage() {
                                 <p className="text-[11px] text-white/55">Review &amp; approve goals</p>
                             </div>
                             <button
-                                onClick={() => goLogin("Manager")}
+                                onClick={() => goSignup("Manager")}
                                 className="mt-auto w-full py-2.5 rounded-xl text-xs font-medium text-indigo-300 hover:text-white transition-all duration-200"
                                 style={{
                                     background: "rgba(99,102,241,0.18)",
@@ -254,7 +257,7 @@ function LandingPage() {
                                 <p className="text-[11px] text-white/55">Org-wide configuration</p>
                             </div>
                             <button
-                                onClick={() => goLogin("Admin")}
+                                onClick={() => goSignup("Admin")}
                                 className="mt-auto w-full py-2.5 rounded-xl text-xs font-medium text-violet-300 hover:text-white transition-all duration-200"
                                 style={{
                                     background: "rgba(124,58,237,0.18)",
